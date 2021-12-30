@@ -5,7 +5,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.Angerable;
@@ -21,7 +20,7 @@ public abstract class WolfEntityMixin extends TameableEntity implements Angerabl
   }
 
   @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
-	private void getMaxOffRailSpeed(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cbir) {
+	private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cbir) {
     // If the wolf isn't tamed we can just leave.
     if (!this.isTamed()) { return; }
 
