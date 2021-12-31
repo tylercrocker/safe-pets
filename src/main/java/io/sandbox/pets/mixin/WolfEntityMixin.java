@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.Angerable;
@@ -25,7 +26,10 @@ public abstract class WolfEntityMixin extends TameableEntity implements Angerabl
     if (!this.isTamed()) { return; }
 
     // If it was the wolf's owner then prevent the damage.
-    if (this.isTeammate(source.getAttacker())) {
+    Entity dmgSource = source.getAttacker();
+    if (dmgSource == null) { return; }
+
+    if (this.isTeammate(dmgSource)) {
       cbir.setReturnValue(false);
       cbir.cancel();
     }
