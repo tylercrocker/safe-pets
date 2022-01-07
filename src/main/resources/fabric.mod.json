@@ -3,10 +3,10 @@
   "id": "pets",
   "version": "${version}",
 
-  "name": "Safe Pets",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Sandbox Safe Pets",
+  "description": "Prevents you from damaging your own pets accidentally.",
   "authors": [
-    "Me!"
+    "Tyler Crocker"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
